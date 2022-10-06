@@ -1,10 +1,6 @@
-a={}
-root = "jaemin"
-left = "jinju"
-right = "nambla"
-# a[root] = [left, right]
-a[root] = [left, right]
-
-print(a[root])
-
-print(a)
+for i in range(9):
+  if i ==1:
+    print("hello")
+    break
+  else:
+    print("hi")
