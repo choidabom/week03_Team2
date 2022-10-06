@@ -1,36 +1,36 @@
-# https://www.acmicpc.net/problem/1991
-
-
-# <루트를 기준으로 판단>
-# 1. 프리오더(전위식) = 루트 - left - right
-# 2. 인오더 (중위식) = left - 루트 - right
-# 3. 포스트오더(후위식) = left - right -루트 
+import sys
  
-
-def pre_order(v):
-  if v:
-    print(v, end="")
-    pre_order(tree[v][0])
-    pre_order(tree[v][1])
-
-def in_order(v):
-  if v:
-    in_order(tree[v][0])
-    print(v, end="")
-    in_order(tree[v][1])
-
-def post_order(v):
-  if v:
-    post_order(tree[v][0])
-    post_order(tree[v][1])
-    print(v, end="")
-
-N = int(input())
+N = int(sys.stdin.readline().strip())
 tree = {}
-for i in range(65, 65+N):
-  tree[chr(i)] = ['','',''] #왼쪽자식, 오른쪽자식, 부모
-
-for _ in range(N):
-  node, left, right = map(str, input().split)
-
-pre_order(1)
+ 
+for n in range(N):
+    root, left, right = sys.stdin.readline().strip().split()
+    tree[root] = [left, right]
+ 
+ 
+def preorder(root): #루트먼저 처리하면 pre
+    if root != '.':
+        print(root, end='')  # root
+        preorder(tree[root][0])  # left
+        preorder(tree[root][1])  # right
+ 
+ 
+def inorder(root):
+    if root != '.':
+        inorder(tree[root][0])  # left
+        print(root, end='')  # root
+        inorder(tree[root][1])  # right
+ 
+ 
+def postorder(root):
+    if root != '.':
+        postorder(tree[root][0])  # left
+        postorder(tree[root][1])  # right
+        print(root, end='')  # root
+ 
+ 
+preorder('A')
+print()
+inorder('A')
+print()
+postorder('A')
