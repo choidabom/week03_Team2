@@ -17,7 +17,7 @@ def union_parent(parent,a,b):
   a = find_parent(parent, a)
   b = find_parent(parent, b)
 
-  if a<b: #둘중 작은 놈을 부모노드로 하는 로직인데 이건 선택임. 
+  if a<b: #둘중 작은 놈을 부모노드로 하는 로직인데 이건 선택사항임. 
     parent[b] = a
   else:
     parent[a] =b
