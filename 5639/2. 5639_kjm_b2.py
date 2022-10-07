@@ -40,6 +40,4 @@ def postorderset(preorder, left, right):
     # 98부터 우측편은 노드가 서브트리가 하나씩 밖에 없는데 그 작동 방법을 아직 이해 못햇음.
 postorderset(preorder, 0, len(preorder) - 1)
 for i in postorder:
-
-
     print(i)
