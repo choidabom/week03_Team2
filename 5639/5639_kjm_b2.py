@@ -1,4 +1,6 @@
 # https://www.acmicpc.net/problem/5639
+# 이 코드 짠사람이 변수명을 지랄같이 짜놔서 겁나 헷갈리긴 하는데.. 장점이 있음
+# b1과 비교했을 때 메모리 쓰는게 10분의 1임. (왼쪽 노드, 오른쪽 노드의 배열을 따로 선언하지 않고 포인터로 구현했거든..)
 import sys
 
 sys.setrecursionlimit(10 ** 9)
@@ -18,13 +20,14 @@ def postorderset(preorder, left, right):
     ls = left + 1 #left start의 줄인말(왼쪽 노드 시작)
     re = right
     rs = right + 1 #right start의 줄인말 (오른쪽 노드 시작)
-    for i in range(right - left + 1):
+    for i in range(right - left + 1): #왜 +1을 해줘야하나 한참 생각했는데 for i in n하면 n 미만까지 출력하지? 그럼 for i in n-1로 하면 n-2까지만 출력됨
         if i == 0:
             continue
         if preorder[left + i] > root:
             rs = left + i  # 루트보다 첫번째로 커지는 수를 오른쪽 프리오더의 시작으로 정해준다
             break
-    le = rs - 1  #rs가 처음 루트보다 preorder[i]가 커진 순간이라면 ls는 i-1까지이겠지?
+    le = rs - 1  #rs가 처음 루트보다 preorder[i]가 커진 순간이라면 ls는 i-1까지이겠지? 
+    # 98루트는 52,60처럼 지가 젤 큰데 이놈은 어떻게 루프가 도는지 설명해보면, 자기보다 오른쪽으로 큰게 없으니 for 안에는 못들어가고 그냥 le = rs - 1 실행되는데 rs가 for문 못돌았으니 그냥 rs+1이니 le =rs(왼쪽 끝과 오른쪽 시작이 같다 => 하나다)
 
     # 여기 아랫 부분이 후위 순회를 구현한 부분임 postorder의 본질은 루트를 postorder라는 배열에 찔러넣는 함수인데.
     # 왼쪽 먼저 찔러넣고, 오른쪽 찔러넣고, 비로소 루트에 찔러넣고 있다. => 후위순회를 구현한 것.
@@ -37,4 +40,6 @@ def postorderset(preorder, left, right):
     # 98부터 우측편은 노드가 서브트리가 하나씩 밖에 없는데 그 작동 방법을 아직 이해 못햇음.
 postorderset(preorder, 0, len(preorder) - 1)
 for i in postorder:
+
+
     print(i)
