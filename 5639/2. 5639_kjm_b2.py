@@ -27,7 +27,7 @@ def postorderset(preorder, left, right):
             rs = left + i  # 루트보다 첫번째로 커지는 수를 오른쪽 프리오더의 시작으로 정해준다
             break
     le = rs - 1  #rs가 처음 루트보다 preorder[i]가 커진 순간이라면 ls는 i-1까지이겠지? 
-    # 98루트는 52,60처럼 지가 젤 큰데 이놈은 어떻게 루프가 도는지 설명해보면, 자기보다 오른쪽으로 큰게 없으니 for 안에는 못들어가고 그냥 le = rs - 1 실행되는데 rs가 for문 못돌았으니 그냥 rs+1이니 le =rs(왼쪽 끝과 오른쪽 시작이 같다 => 하나다)
+    # 98루트는 52,60과 비교하면 지가 젤 큰데 이놈은 어떻게 루프가 도는지 설명해보면, 자기보다 오른쪽으로 큰게 없으니 23번줄 for문 안에는 못들어가고 그냥 le = rs - 1 실행되는데 rs가 for문 못돌았으니 그냥 rs+1이니 le =rs(왼쪽 끝과 오른쪽 시작이 같다 => 하나다)
 
     # 여기 아랫 부분이 후위 순회를 구현한 부분임 postorder의 본질은 루트를 postorder라는 배열에 찔러넣는 함수인데.
     # 왼쪽 먼저 찔러넣고, 오른쪽 찔러넣고, 비로소 루트에 찔러넣고 있다. => 후위순회를 구현한 것.
@@ -37,7 +37,6 @@ def postorderset(preorder, left, right):
                             # 그다음 재귀인 root가 28이 postorder에 들어가고 재귀 28은 pop (잘봐.. append까지 들어가고 나서 pop임! 재귀 끝나고 바로 pop이 아니라. )
                             # 쭉 가다보면 30이 나오는데 왼쪽인 24는 이미 postorder에 박았고(왼쪽 프리오더 순환 끝났다는 이야기) 오른쪽 45를 postorder에 박으면서 오른쪽 프리오더 끝나고, 비로소 24, 45의 루트인 30을 postorder에 박으면서 질질 끌었던 재귀가 스택에서 pop됨  
     
-    # 98부터 우측편은 노드가 서브트리가 하나씩 밖에 없는데 그 작동 방법을 아직 이해 못햇음.
 postorderset(preorder, 0, len(preorder) - 1)
 for i in postorder:
     print(i)

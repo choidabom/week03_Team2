@@ -6,11 +6,11 @@ tree = {}
  
 for n in range(N):
     root, left, right = sys.stdin.readline().strip().split()
-    tree[root] = [left, right]
+    tree[root] = [left, right] #{"root"="[left,right]"}
  
  
 def preorder(root): #루트먼저 처리하면 pre
-    if root != '.':
+    if root != '.': #preorder라는 함수의 핵심은 다 제끼고 print를 하는거임 preorder재귀를 말로 설명해보면 Root 프린트하고, left프린트하고, right도 프린트하는거임.
         print(root, end='')  # root
         preorder(tree[root][0])  # left
         preorder(tree[root][1])  # right
