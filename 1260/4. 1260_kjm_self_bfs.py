@@ -2,9 +2,8 @@ from collections import deque
 import sys
 sys.stdin = open("input.txt","r")
 
-# 총평(일부러 n까지만 범위줘서 해봤는데 인덱스 관리 엄청 빡세짐. 직접 짜보니까 머리로 이해한 거랑은 완전 달랐음.)
-
 # bfs구현
+#edges는 = [[2, 3, 4], [1, 4], [1, 4], [1, 3, 2]]
 def bfs(starting_point): #문제 조건에 따르면 1부터 조회(파리미터로 -1해서 들어오니까 현재 0임)
     visited = [False] * n #[False, False, False, False] #방문여부 체킹하기 위해 노드 수에 맞춰서 false 넣어놓음
     # visited = [False for _ in range(n)]
@@ -19,10 +18,9 @@ def bfs(starting_point): #문제 조건에 따르면 1부터 조회(파리미터
 
         for itr_edge in edges[starting_point-1]: #1과 인접한 2,3,4 각각을 큐에 넣어야지
             if visited[itr_edge-1] == False:
-            # if visited[starting_point-1] == False:
+            # if visited[starting_point-1] == False: #나이거 헷갈리네 1을 봣으면 1 아래에 있는 2,3,4를 봐야하는데 starting_point로 해버리면 다시 1을 보겠다는 의미가 되어버림.
                 deq.append(itr_edge)
                 visited[itr_edge-1] =True
-
 
 ''' 
 아래 방법은 내가 쓴 코드인데 for문이 먼저 나오고 while문을 썼다. 
@@ -43,7 +41,7 @@ def bfs(starting_point): #문제 조건에 따르면 1부터 조회(파리미터
                 visited[starting_point-1] = True # 방문했으니 True로 바꾸고 
 '''    
 
-    #edges는 = [[2, 3, 4], [1, 4], [1, 4], [1, 3, 2]]
+
 
 # 입력
 n, m, v= map(int, sys.stdin.readline().split())
@@ -76,6 +74,7 @@ for itr_list in edges: #[1,2]
         relationship_l[a-1].append(b)
         relationship_l[b-1].append(a)
 '''
+
 # 관계 표현 (관계라함은 첫번째 입력이 1,2 라면 edges의 첫번째 인자에 2를 넣고, edges의 두번째 인자에 1을 넣는 것(둘이 이어주는것) )
 edges =list([] for _ in range(n)) #edges = [[], [], [], []]
 for i in range(m):
@@ -87,7 +86,10 @@ for i in range(m):
 for itr_edges in edges:
     itr_edges.sort()
 
-bfs(v) 
+
+
+print()
+bfs(v)
 
 
         

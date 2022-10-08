@@ -3,7 +3,7 @@
 
 
 import sys
-sys.stdin = open("input.txt","r")
+# sys.stdin = open("input.txt","r") #이 코드 안 없애고 제출하면 런타임에러
 from collections import deque
 
 n, m, v = map(int, sys.stdin.readline().split())
@@ -38,27 +38,40 @@ def bfs(v):
   # 이거랑 같은말
   # q=deque()
   # q.append(v)
-  
-  visited[v] = True
-  while q: 
+
+  visited[v] = True #일단 최초 시작점은 방문한거니까 true로 바꾸고
+  while q: #큐가 있으면 도는데 큐엔 뭐가 쌓이느냐
     v = q.popleft()
-    print(v, end= '')
+    print(v, end= ' ')
     
     for i in edges[v]:
       if not visited[i]:
-        q.append(i)
+        q.append(i) #v(1)과 인접해있는데 아직 방문은 하지 않은 놈들을 전부 큐에 넣어놓음(미뤄놓음) 
         visited[i] = True
 
+# def dfs(n) :
+#     visited[n] = True
+#     print(n, end = ' ')
+#     for i in edges[n] :     # n으로 들어간 값을 다 찍고 나옴. 
+#         if not visited[i] :
+#             dfs(i)
 
+def dfs(v):
+  visited[v] = True
+  print(v, end=' ')
+  for i in edges[v]:
+    if visited[i]==False:
+    # if visited[v]==False: (또 이걸 1 즉 v라고 해서 오류남)
+      dfs(i)
 
+# 문제의 조건에서 빠른 숫자를 먼저 출력하라(방문하라)라고 있어서 정렬해야함.
+for i in range(1, n+1) :
+    edges[i].sort()
+# print(graph)
 
-
-
-
-for i in range(1, n+1):
-  edges[i].sort()
+visited = [False] * (n+1)
+dfs(v)
+print()
 
 visited = [False] * (n+1)
 bfs(v)
-# print(visited)
-
