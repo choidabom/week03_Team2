@@ -4,11 +4,11 @@
 import sys 
 input =  sys.stdin.readline
 
-def find_parent(parent, x):#112, 223, 313에 따라 12먼저, 23다음, 13이 올거임. 맨앞자리는 cost, c 가중치니까
+def find_parent(parent, x):#parent배열인 112, 223, 313 중 12먼저, 23다음, 13이 올거임. 맨앞자리는 cost, c 가중치이고 파라미터로 보낸건 a,b니까
   if parent[x] != x:  #이 말은 자기자신이 parent가 아닌 즉 부모님이 따로 있는. 즉 어딘가에 연결 되어있다면.. 
     parent[x] = find_parent(parent, parent[x]) 
     #이 부분 꽤나 이해하기 어려운데.. 만약 부모님이 따로있어? 그럼 부모님이 남긴 dna를 따라서 부모님을 찾아라는 뜻이거든?
-    #그 dna가 어케 남아있냐면.. parent라는 리스트는 [0,1,1,3]으로 생겼을거야. 여기서 0은 자릿수 맞추려고 넣은거고, 2자리에 2가 아니라 1이 들어와있지? 그럼 그 1이 dna임. 
+    #그 dna가 어케 남아있냐면.. parent라는 리스트는 [0,1,1,3]으로 생겼을거야. 여기서 0은 자릿수 맞추려고 넣은거고, index 2자리에 2가 아니라 1이 들어와있지? 그럼 그 1이 dna임. 
     #1의 부모를 찾으려면 find_parent에 넣으면 됨. (자기자신이 부모이면서 부모를 찾는다는게 좀 역설적이라 더 헷갈리는 듯..) 
 
   return parent[x] #find_parent함수는 결국 자기 자신이 paprent이든 어디에 종속되어있어 부모님이 따로 계시든 결국 parent[x], 부모님을 내뱉는 함수 
@@ -24,14 +24,14 @@ def union_parent(parent,a,b):
 
 v,e=map(int, input().split())
 parent = [ i for i in range(v+1) ]
-edges= []
+edges= [] #흔히 edges는 선을 의미함(출발점, 도착점이 있어야 선이겟지? 탐욕알고리즘에서는 특별히 cost값도 들어가고)
 result=0
 
 for _ in range(e):
   a,b,c = map(int, input().split())
   edges.append((c,a,b))
 
-edges.sort() #오름차순으로 정렬
+edges.sort() #오름차순으로 정렬 (cost가 작은것 부터 선을 그니까)
 
 for edge in edges:
   cost, a,b = edge  #c를 cost라고하자
