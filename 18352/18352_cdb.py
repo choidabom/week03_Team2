@@ -1,5 +1,8 @@
+<<<<<<< HEAD
 # 18352: 특정 거리의 도시 찾기
 
+=======
+>>>>>>> jaemin
 import sys
 sys.stdin = open("18352/input.txt","r")
 from collections import deque, defaultdict
@@ -36,4 +39,9 @@ for _ in range(M):
     # A번 도시에서 B번 도시로 이동하는 단방향 도로가 존재함.
     graph[A].append(B)
 
+<<<<<<< HEAD
 bfs(graph, X, costs, visited)
+=======
+bfs(graph, X, costs, visited)
+
+>>>>>>> jaemin
