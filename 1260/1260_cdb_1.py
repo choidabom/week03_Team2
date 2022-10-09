@@ -1,7 +1,8 @@
 # 1260: DFS와 BFS
+# dfs, bfs => 재귀 활용, 입력값 dict 활용
 
 import sys
-sys.stdin = open('input.txt', 'r')
+sys.stdin = open('1260/input.txt', 'r')
 
 # 특징적인 것은 visited 자료형을 기본 함수 인자로 포함시키고,
 # 방문한 리스트들을 재귀함수를 통해 visited에 담는 방식
