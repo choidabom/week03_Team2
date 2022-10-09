@@ -47,6 +47,7 @@ def bfs(v):
     for i in edges[v]:
       if not visited[i]:
         q.append(i) #v(1)과 인접해있는데 아직 방문은 하지 않은 놈들을 전부 큐에 넣어놓음(미뤄놓음)  #1과 인접한 2,3,4 각각을 큐에 넣어야지
+        # dfs에서는 인접한 것 중 방문하지 않은 놈들 모두 넣는게 아니라, 한놈만 파서 계속 밑으로 내려가는것.
         visited[i] = True
 
 # def dfs(n) :
