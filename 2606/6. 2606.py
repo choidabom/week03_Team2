@@ -2,6 +2,7 @@
 
 #입력받고 연결관계를 표현하기
 #dfs로 1번 컴터부터 시작해서 맨 밑단까지 다 돌게하고 돈 피씨들은 True로 바꾸기
+
 import sys
 sys.setrecursionlimit (10**9)
 
