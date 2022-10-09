@@ -31,9 +31,19 @@ def solution(A):
             tempL = A[1:i]
             tempR = A[i:]
             break
+<<<<<<< HEAD
     else:
     	#모두 mid보다 작은 경우라면 오른쪽은 없다는 소리니까 tempR는 없다.
         tempL = A[1:]
+=======
+        else:
+    	#모두 mid보다 작은 경우라면 오른쪽은 없다는 소리니까 tempR는 없다.
+            tempL = A[1:] 
+            #재귀가 대체 언제 끝나는가? 딱 보면 안보이는데 디버거 돌려보면
+            #예를들어 루트가 5처럼 딱 하나만 있으면 A[1:]해버리면 포함이 안되겠지? A[0:]이면 5도 포함될텐데..
+            #그럼 len(tempL)에는 아무것도 안들어있으니까 if len(A) == 0: return 에서 재귀가 끝나게 됨.
+
+>>>>>>> jaemin
     
     #문제가 요구하는 postorder순서로 왼쪽, 오른쪽 순으로 재귀 후 루트 노드 값 출력
     solution(tempL)
