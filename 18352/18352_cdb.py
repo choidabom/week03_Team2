@@ -1,3 +1,5 @@
+# 18352: 특정 거리의 도시 찾기
+
 import sys
 sys.stdin = open("18352/input.txt","r")
 from collections import deque, defaultdict
@@ -35,4 +37,3 @@ for _ in range(M):
     graph[A].append(B)
 
 bfs(graph, X, costs, visited)
-

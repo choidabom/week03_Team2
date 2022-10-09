@@ -1,7 +1,7 @@
 import sys
 sys.stdin = open('input.txt', 'r')
 input = sys.stdin.readline
-print = sys.stdout.write
+# print = sys.stdout.write
 
 n = int(input())
 nodes = dict()
@@ -18,7 +18,7 @@ for _ in range(n):
 def preorder(root): # 전위순회
     if root == '.':
         return
-    print(f'{root}')
+    print(f'{root}', end="")
     preorder(nodes[root][0])
     preorder(nodes[root][1])
 
@@ -26,7 +26,7 @@ def inorder(root):  # 중위순회
     if root == '.':
         return
     inorder(nodes[root][0])
-    print(f'{root}')
+    print(f'{root}', end="")
     inorder(nodes[root][1])
 
 def postorder(root): # 후위순회
@@ -35,11 +35,11 @@ def postorder(root): # 후위순회
     # nodes[root][0]와 nodes[root][1]는 root의 자식노드 !
     postorder(nodes[root][0]) # 왼쪽 자식 노드
     postorder(nodes[root][1]) # 오른쪽 자식 노드
-    print(f'{root}')          # 노드 방문
+    print(f'{root}', end="")          # 노드 방문
 
 # temp[0] == 'A' 일 때~
 preorder('A')
-print('\n')
+print()
 inorder('A')
-print('\n')
+print()
 postorder('A')

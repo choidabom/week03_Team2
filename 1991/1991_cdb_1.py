@@ -1,11 +1,10 @@
 # 1991: 트리 순회
 
 import sys
-sys.stdin = open('input.txt', 'r')
-
 # 트리의 순회(Tree Traversal)
 class Node:
     def __init__(self, item, left, right):
+        # item은 본인(root node가 됨), left, right는 각각 child node가 됨.
         self.item = item    # 부모 노드 저장
         self.left = left    # 왼쪽 자식 노드
         self.right = right  # 오른쪽 자식 노드
