@@ -5,7 +5,7 @@ sys.stdin = open("input.txt","r")
 # bfs구현
 #edges는 = [[2, 3, 4], [1, 4], [1, 4], [1, 3, 2]]
 def bfs(starting_point): #문제 조건에 따르면 1부터 조회(파리미터로 -1해서 들어오니까 현재 0임)
-    visited = [False] * n #[False, False, False, False] #방문여부 체킹하기 위해 노드 수에 맞춰서 false 넣어놓음
+    visited = [False] * n 
     # visited = [False for _ in range(n)]
     deq=deque()
     deq.append(starting_point)
@@ -75,7 +75,7 @@ for itr_list in edges: #[1,2]
         relationship_l[b-1].append(a)
 '''
 
-# 관계 표현 (관계라함은 첫번째 입력이 1,2 라면 edges의 첫번째 인자에 2를 넣고, edges의 두번째 인자에 1을 넣는 것(둘이 이어주는것) )
+# 관계 표현 
 edges =list([] for _ in range(n)) #edges = [[], [], [], []]
 for i in range(m):
     a,b = map(int, sys.stdin.readline().split())

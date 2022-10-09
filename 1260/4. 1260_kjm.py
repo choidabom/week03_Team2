@@ -46,7 +46,7 @@ def bfs(v):
     
     for i in edges[v]:
       if not visited[i]:
-        q.append(i) #v(1)과 인접해있는데 아직 방문은 하지 않은 놈들을 전부 큐에 넣어놓음(미뤄놓음) 
+        q.append(i) #v(1)과 인접해있는데 아직 방문은 하지 않은 놈들을 전부 큐에 넣어놓음(미뤄놓음)  #1과 인접한 2,3,4 각각을 큐에 넣어야지
         visited[i] = True
 
 # def dfs(n) :
@@ -69,7 +69,7 @@ for i in range(1, n+1) :
     edges[i].sort()
 # print(graph)
 
-visited = [False] * (n+1)
+visited = [False] * (n+1)#[False, False, False, False] #방문여부 체킹하기 위해 노드 수에 맞춰서 false 넣어놓음
 dfs(v)
 print()
 
