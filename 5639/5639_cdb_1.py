@@ -1,8 +1,7 @@
 # 5639: 이진 탐색 트리
-
 import sys
 sys.stdin = open('input.txt', 'r')
-sys.setrecursionlimit(14000)
+sys.setrecursionlimit(10**8)
 input = sys.stdin.readline
 print = sys.stdout.write
 
