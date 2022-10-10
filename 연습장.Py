@@ -1,4 +1,12 @@
-a = []
+from email.errors import HeaderMissingRequiredValue
+import heapq
+list_l=[4,5,2,1,7]
+heap = []
 
-if len(a)==0 :
-  print("hi")
+for list in list_l:
+  heapq.heappush(heap, list)
+
+
+# for i in range(len(a)):
+#   a[i]=heapq.heappop(heap)
+print(heap)
