@@ -1,3 +1,4 @@
+# https://www.acmicpc.net/problem/2178
 from collections import deque
 N,M = map(int, input().split()) #행 N, 열 M
 
@@ -29,7 +30,7 @@ def bfs(row,col):
         # 벽을 만나면 안됨 (문제 조건상 0을 만나면 벽인거임..)
         continue #continue쓰면 이 코드만 건너 뛰게됨. break는 탈출
       if graph[new_row][new_col] ==1: #1이어야지만 유일하게 갈 수 있는 칸이 됨.
-        graph[new_row][new_col] = graph[row][col]+1 #우리는 몇번 전진 
+        graph[new_row][new_col] = graph[row][col]+1 #다음 칸이 갈 수 있는 칸이면 +1을 해서 저장하는거야. https://chanhuiseok.github.io/posts/algo-32/ 이 블로거가 설명하는 것처럼 row, col말고 현재 몇칸까지 왔나를 기록할 가상의 배열 new_row, new_col을 하나 만든다고 생각해도 됨. 
         queue.append((new_row, new_col)) 
         #bfs는 ㄴ처리 끝났다고 그 결과 값가지고 다음 단계 넘어가는게 아니라 ㄷ, ㄹ을 처리하러 가야함. 그래서 일단 주머니에 넣어놓는거임.
         
