@@ -17,9 +17,8 @@
 
 import sys
 from collections import deque
-# sys.stdin = open("input.txt","r")
 input = sys.stdin.readline
-
+sys.stdin = open("input.txt","r")
 m,n,h = map(int,input().split())
 
 
@@ -27,8 +26,7 @@ dx = [-1,1,0,0,0,0]
 dy = [0,0,-1,1,0,0]
 dz = [0,0,0,0,-1,1]
 
-data =[[[map(int, input().split())] for _ in range(n) ] for _ in range(h)]
-
+data = [[list(map(int, input().split())) for _ in range(n)] for _ in range(h)]
 queue = deque()
 
 #3차원 bfs문제
@@ -36,37 +34,44 @@ def bfs():
     while queue:
         # 높이, x,y 순서
         z,x,y = queue.popleft()
-        for i in range(6): #x,y,z각각이 증가 또는 감소니까 총 6가지 경우 발생 
+        for i in range(6):
             nx = x + dx[i]
             ny = y + dy[i]
             nz = z + dz[i]
             if -1<nx<n and -1<ny<m and -1<nz<h:
                 # 높이, x,y 순서
-                if data[nz][nx][ny] == 0:
-                    data[nz][nx][ny] = data[z][x][y]+1
+                if data[nz][nx][ny] == 0: #0은 안 익은 토마토
+                    data[nz][nx][ny] = data[z][x][y]+1  #이거 그냥 +1만하면 틀리네? 왜지?(이게 날짜 카운팅인가?)
                     queue.append((nz,nx,ny))
             
 for i in range(h):
     for j in range(n):
         for k in range(m):
             # 높이, x,y 순서
-            if data[i][j][k] == 1:
+            if data[i][j][k] == 1: 
                 # 높이, x,y 순서
-                queue.append((i,j,k))
+                queue.append((i,j,k)) #익은 토마토는 주머니에 넣어 놨다가 그 주위에 어느 토마토 감염시키는지 봐야지 
 bfs()
+# bfs돌리면 결과물 
+#  0 -1 3 2 2
+# -1 -1 2 1 1
+#  4  3 2 1 1
 flag = 0
 result = -2
 for i in range(h):
     for j in range(n):
         for k in range(m):
             # 높이, x,y 순서
-            if data[i][j][k] == 0:
-                flag = 1
-                # 높이, x,y 순서
-            result = max(result,data[i][j][k])
-if flag == 1:
-    print(-1)
-elif result == -1:
-    print(0)
+            if data[i][j][k] == 0: #data를 bfs로 조회를 끝냈는데 0이 발견 되었다. =>  떨어져있어서 안 익는 토마토가 있다.
+                flag = 1  #그냥 바로 -1출력하면 되지 왜 flag에 +1을 더하나?? 나라면 걍 -1바로 출력할 듯
+            result = max(result,data[i][j][k]) #0만 없으면 data에서 최대값을 출력하면 되니까. 4가 나오겠네.(0이 없다고 가정하면..)
+            # bfs돌리면 결과물에서 max값
+            #  0 -1 3 2 2
+            # -1 -1 2 1 1
+            #  4  3 2 1 1
+if flag == 1: 
+    print(-1) #flag가 1이라는 소리는 data에서 0이 발견 되었다는 소리 -1을 프린트
+elif result == -1:#최댓값을 뽑아라했는데 최댓값이 -1이래 전부다 -1로 되어있다는 소리겠지. = 애당초 다 익은 상태다.
+    print(0) 
 else:
-    print(result-1)
+    print(result-1) #data[nz][nx][ny] = data[z][x][y]+1 할 때 애당초 1부터 시작했기 때문에 날짜가 +1일 부풀려져있음. 따라서 -1
