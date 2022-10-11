@@ -41,7 +41,7 @@ def bfs():
             if -1<nx<n and -1<ny<m and -1<nz<h:
                 # 높이, x,y 순서
                 if data[nz][nx][ny] == 0: #0은 안 익은 토마토
-                    data[nz][nx][ny] = data[z][x][y]+1  #이거 그냥 +1만하면 틀리네? 왜지?(이게 날짜 카운팅인가?)
+                    data[nz][nx][ny] = data[z][x][y]+1  #이거 그냥 +1만하면 틀리네? 당연하지 시작점에서 한칸씩 떨어진 친구들은 +1일, 두칸씩 떨어진 친구들은 +2가 되어야하니까 현재 위치까지 오는데 소요일수에다가 +1, 하루해서 다음위치의 날짜를 기록
                     queue.append((nz,nx,ny))
             
 for i in range(h):
