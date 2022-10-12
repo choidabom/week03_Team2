@@ -63,7 +63,7 @@ for r in range(R):
     for c in range(C):
         if graph[r][c] == 'S':
             bear_r, bear_c = r,c
-            # graph[r][c] =='.' #이거 왜해?
+            # graph[r][c] =='.' #이거 왜해? #없어도 되네
         elif graph[r][c] == '*':
             water_que.append([r,c])
 water()
