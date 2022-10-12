@@ -6,7 +6,7 @@
 
 import sys
 from collections import deque
-sys.stdin = open("input.txt","r")
+# sys.stdin = open("input.txt","r")
 
 dx = [1,-1,0,0]
 dy = [0,0,-1,1]
@@ -63,7 +63,7 @@ for r in range(R):
     for c in range(C):
         if graph[r][c] == 'S':
             bear_r, bear_c = r,c
-            graph[r][c] =='.' #이거 왜해?
+            # graph[r][c] =='.' #이거 왜해?
         elif graph[r][c] == '*':
             water_que.append([r,c])
 water()
