@@ -1,5 +1,5 @@
 # 24479: 알고리즘 수업 - 깊이 우선 탐색 1
-# https://coooco.tistory.com/57
+# https://aigong.tistory.com/469
 # N개의 정점과 M개의 간선으로 구성된 무방향 그래프(undirected graph)
 # 출력 => i번째 줄에는 정점 i의 방문 순서를 출력함. 시작 정점의 방문 순서는 1이다. 시작 정점에서 방문할 수 없는 경우 0을 출력한다. 
 # 결론: 출력은 visited에 몇 번째로 출력되는지 출력하는 것!
