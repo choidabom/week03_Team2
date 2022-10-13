@@ -1,41 +1,46 @@
+
+from collections import defaultdict
 import sys
+
 sys.setrecursionlimit(1000000)
-sys.stdin= open("input.txt")
+
 input = sys.stdin.readline
 
 K = int(input())
 
-def dfs(itr):
-  for r in graph[itr]: 
-    if visited[itr] == False:
-      if visited[r] == 1: 
-        visited[itr] = 2
-      elif visited[r] ==2: 
-        visited[itr] = 1
-      dfs(r)
-    elif (visited[itr] == visited[r]):
-      return False 
-  return True 
+def dfs(start, color):
+  global res
+  if visited[start] ==0:
+    visited[start] = color
+    for next in graph[start]:
+      if visited[next] != 0:
+        if visited[next] == visited[start]:
+          res = 0
+          return #False
+      else:
+        dfs(next, color*-1)
+
 
 for _ in range(K):
-    V, E = map(int, input().split()) 
-    graph = [[] for _ in range(V + 1)]  
-    visited = [False] * (V + 1)
+    V, E = map(int, input().split()) #V는 정점의 개수, E는 간선의 개수
+
+    graph = defaultdict(list) 
+
+    
+    visited = {i: 0 for i in range(1,V+1)}  # 방문한 정점 체크
 
     for _ in range(E):
         a, b = map(int, input().split())
         graph[a].append(b)
         graph[b].append(a)
 
-    for i in range(1, V+1):
-      if visited[i]==False:
-          visited[i] = 1
-          for itr in graph[i]: 
-            result = dfs(itr) 
-            if not result:
-                break
+    res =1
 
-    if result == False:
+    for i in range(1, V+1):
+      dfs(i, 1)
+
+
+    if res == 0:
       print("NO")
     else:
       print("YES")
