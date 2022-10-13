@@ -28,7 +28,6 @@ def dijkstra(x, y):
             next_y = curr_y + dy[i]
 
             if  0 <= next_x < n and 0 <= next_y < n and visited[next_x][next_y] == 0:
-                
                 # 검은 방인 경우 흰 방으로 바꾼다.
                 if maze[next_x][next_y] == 0:
                     heappush(heap, (cnt+1, next_x, next_y))
