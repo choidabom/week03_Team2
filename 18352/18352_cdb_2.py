@@ -33,9 +33,6 @@ graph = defaultdict(list)
 costs = [-1] * (N+1)
 visited = [False] * (N+1)
 
-print(costs)
-print(visited)
-
 for _ in range(M):
     A, B = map(int, input().split())
     # A번 도시에서 B번 도시로 이동하는 단방향 도로가 존재함.
