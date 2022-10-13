@@ -11,16 +11,18 @@ def dijkstra(start, end):
     # 시작 노드로 가기 위한 최단 거리는 0으로 설정하여,큐에 삽입
     heappush(queue, (0, start)) # 시작지점 힙에 추가
     distance[start] = 0 # 시작 지점 0으로 초기화
-    
+
     while queue:
         # 가장 최단 거리가 짧은 노드에 대한 정보 꺼내기
+        # dist: 최단 거리, now: 출발지 번호
         dist, now = heappop(queue)
+        print(dist, now)
         
         # 이미 방문한 적 있는 도시이면 무시
         if distance[now] < dist:
             continue
 
-        # 인접 노드 확인
+        # 인접 노드 확인 
         for next in graph[now]:
             # cost 계산: 현재 node의 누적 거리 + 현재 노드에서 다음 노드까지의 거리
             cost = dist + next[0]
@@ -41,7 +43,9 @@ if __name__ == "__main__":
         # 출발지, 도착지, 비용
         start, end, cost = map(int, input().split())
         graph[start].append((cost, end))
+
     # 찾고자하는 비용 경로(출발지, 도착지)
     start, end = map(int, input().split())
+
 
     print(dijkstra(start, end))
